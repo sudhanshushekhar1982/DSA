@@ -9,7 +9,6 @@ public class f1 {
         }
         System.out.print(n+" ");
         decreasingOrder(n-1);
-        
     }
     public static void main(String [] args) {
         int n;
