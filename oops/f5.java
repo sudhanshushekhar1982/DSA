@@ -9,6 +9,6 @@ public class f5 {
 class Animal {
     String color;
     void eat() {
-        System.out.pri
+        System.out.println();
     }
 }
