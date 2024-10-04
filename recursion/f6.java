@@ -2,11 +2,22 @@ package recursion;
 import java.util.*;
 import java.lang.*;
 public class f6 {
-    public static int expo(int b,int e) {
+    public static int expo(int b,int e) { // time complexity O(2^n)
         if(e == 0) {
             return 1;
         }
         return (b*expo(b, e-1));
+    }
+    public static int optimizedPower(int a,int n) {
+        if(n == 0) {
+            return 1;
+        }
+        int halfPowerSquare = optimizedPower(a, n/2)*optimizedPower(a, n/2);
+        //if n is odd
+        if(n % 2 != 0) {
+            halfPowerSquare = a*halfPowerSquare;
+        }
+        return halfPowerSquare;
     }
     public static void main(String[] args) {
         int b,e;
