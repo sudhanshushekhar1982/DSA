@@ -8,11 +8,12 @@ public class f6 {
         }
         return (b*expo(b, e-1));
     }
-    public static int optimizedPower(int a,int n) {
-        if(n == 0) {
+    public static int optimizedPower(int a,int n) { // O(logn)
+        if(n == 0) { 
             return 1;
         }
-        int halfPowerSquare = optimizedPower(a, n/2)*optimizedPower(a, n/2);
+        int halfPower = optimizedPower(a, n/2);
+        int halfPowerSquare = optimizedPower(a, n/2)*halfPower;
         //if n is odd
         if(n % 2 != 0) {
             halfPowerSquare = a*halfPowerSquare;
@@ -28,5 +29,9 @@ public class f6 {
         e = sc.nextInt();
         int valueCalculated = expo(b, e);
         System.out.print("the value of"+b+"to the power"+e+"is:"+valueCalculated);
+
+        int newValue = optimizedPower(b, e);
+        System.out.println();
+        System.out.println(newValue);
     }    
 }
