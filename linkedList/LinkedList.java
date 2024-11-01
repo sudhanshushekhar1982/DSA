@@ -142,7 +142,7 @@ public class LinkedList {
         System.out.println("the size of the linked List is:"+calc);
      }
 
-     public static int removeFirst() {
+     public static int removeFirst() { //constant time comlexity ke andar hota hai: O(1)
         if(size == 0) {
             System.out.println("UnderFlow Error!");
             return Integer.MIN_VALUE;
@@ -155,6 +155,27 @@ public class LinkedList {
         int val = head.data;
         head = head.next;
         size--;
+        return val;
+     }
+
+     public static int removeLast() {
+        if( size == 0 ) {
+            System.out.println("UnderFlow Error!");
+            return Integer.MIN_VALUE;
+        } else if(size == 1) {
+            int val = head.data;
+            head = tail = null;
+            size = 0;
+            return val;
+        } 
+        Node prev = head;
+        for(int i =0;i<size-2;i++) {
+            prev = prev.next;
+        }
+        int val = prev.next.data;
+        prev.next = null;
+        tail = prev;
+        size --;
         return val;
      }
     public static void main(String[] args) {
@@ -172,6 +193,8 @@ public class LinkedList {
         ll.printLL(head);
         System.out.println(ll.size);
         System.out.println("The removed value is:"+ll.removeFirst());
+        ll.printLL(head);
+        System.out.println("The last deleted value is:"+ll.removeLast());
         ll.printLL(head);
     }
  } 
