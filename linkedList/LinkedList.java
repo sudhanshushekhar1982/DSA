@@ -14,7 +14,11 @@
  * dono nodes ka help lagta hai always.
  */
 
- public class LinkedList {
+import java.security.PublicKey;
+
+import recursion.tilingProblem;
+
+public class LinkedList {
     public static class Node {///sabse pehle ek class hoga
         int data;
         Node next;      //phir data aur next defined hoga
@@ -33,8 +37,8 @@
      * 3)head = new Node
      */
 
-     public void addFirst(int data) { // overall time complexity of the funnction O(1)
-        
+     public static void addFirst(int data) { // overall time complexity of the funnction O(1)
+
         // step-1) create new node
         Node newNode = new Node(data);
 
@@ -50,11 +54,80 @@
         //step -3) head = newNode
         head = newNode;
      }
+ 
+     //Add at last function
+     /*1)create a new node
+       2)tail.next = new Node
+       3) tail = newNode
+       4)
+      */
+      public void addLast(int data) { // constant time operation O(1)
+        Node newNode = new Node(data);
+        if(head  == null) {
+            head = tail = newNode;
+            return;
+        }
+        tail.next = newNode;
+        tail = newNode;
+      }
+
+      //printing the linkedList
+      public static void printLL(Node head) {   //this method is having linear time complexity O(1)
+        if(head == null) {
+            System.out.println("Linked List is empty!");
+            return;
+        }
+        Node temp = head;
+        
+        while (temp!=null) {
+            System.out.print(temp.data+"->");
+            temp = temp.next;
+            if(temp == null) {
+                System.out.print("null");
+            }
+        } 
+        System.out.println();
+       
+      }
+      public static void addMiddle(int pos,int data) { // linear time complexity
+        if(pos == 0) {
+            addFirst(data);
+            return;
+        }
+        Node temp = head;
+        int i=0;
+        while (i != pos-1) {
+            temp = temp.next;
+            i++;
+        }
+        Node newNode = new Node(data);
+        newNode.next = temp.next;
+        temp.next = newNode;
+      }
+
+      /*public static void addAtMiddle(int pos,int data) {
+        Node temp = head;
+        int i =0;
+        while(i != pos-1) {
+            temp = temp.next;
+            i++;
+        }
+        Node newNode = new Node(data);
+        newNode.next = temp.next;
+        temp.next = newNode;
+      } */
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
-        ll.addFirst(1);
+        ll.printLL(head);
         ll.addFirst(2);
-        ll.addFirst(3);
-        System.out.println(ll.head.data+"->"+ll.head.next.data+"->"+ll.head.next.next.data);
+        ll.printLL(head);
+        ll.addFirst(1);
+        ll.printLL(head);
+        ll.addLast(3);
+        ll.printLL(head);
+        //System.out.println(ll.head.data+"->"+ll.head.next.data+"->"+ll.head.next.next.data);
+        printLL(head);
+        ll.addMiddle(2, 10);
+        ll.printLL(head);
     }
  } 
