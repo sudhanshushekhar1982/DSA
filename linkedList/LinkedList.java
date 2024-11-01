@@ -14,8 +14,8 @@
  * dono nodes ka help lagta hai always.
  */
 
- public class f1 {
-    public class Node {///sabse pehle ek class hoga
+ public class LinkedList {
+    public static class Node {///sabse pehle ek class hoga
         int data;
         Node next;      //phir data aur next defined hoga
 
@@ -24,7 +24,26 @@
             this.next=null; //phir constructor hoga
         }
     }
-    public static void main(String[] args) {
+    public static Node head;
+    public static Node tail;
 
+    /* Adding in the linked list
+     * 1)create new node
+     * 2)new node's next = head
+     * 3)head = new Node
+     */
+
+     public void addFirst(int data) {
+        // step-1) create new node
+        Node newNode = new Node(data);
+        //step -2)assigninng the new nodes next valsue to the head
+        newNode.next = head;//linking step
+        
+     }
+    public static void main(String[] args) {
+        LinkedList ll = new LinkedList();
+        ll.head = new Node(1);
+        ll.head.next = new Node(2);
+        System.out.println(ll.head.next.data);
     }
  } 
