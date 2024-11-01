@@ -125,7 +125,7 @@ public class LinkedList {
 
 
       //SIZE KO PRINT YA NKALNE KA DO TARIKA HAI
-      
+
       //step 1)har node ke banne pr ya delete krne pr size ko update kar le isse isse constant time me size aa jaega O(1)
       //step 2)by loop method bhi nikal skte hai linear hoga complexity O(n)
      public static void size(Node head) { 
@@ -141,6 +141,22 @@ public class LinkedList {
         }
         System.out.println("the size of the linked List is:"+calc);
      }
+
+     public static int removeFirst() {
+        if(size == 0) {
+            System.out.println("UnderFlow Error!");
+            return Integer.MIN_VALUE;
+        } else if(size == 1) {
+            int val =head.data;
+            head = tail = null;
+            size--;
+            return val;
+        }
+        int val = head.data;
+        head = head.next;
+        size--;
+        return val;
+     }
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
         ll.printLL(head);
@@ -154,6 +170,8 @@ public class LinkedList {
         printLL(head);
         ll.addMiddle(3, 4);
         ll.printLL(head);
-        System.out.println(ll.size);;
+        System.out.println(ll.size);
+        System.out.println("The removed value is:"+ll.removeFirst());
+        ll.printLL(head);
     }
  } 
