@@ -33,17 +33,28 @@
      * 3)head = new Node
      */
 
-     public void addFirst(int data) {
+     public void addFirst(int data) { // overall time complexity of the funnction O(1)
+        
         // step-1) create new node
         Node newNode = new Node(data);
-        //step -2)assigninng the new nodes next valsue to the head
+
+        //assuming if my linked list is empty
+        if(head  == null ) {
+            head = tail = newNode;
+            return;
+        }
+
+        //step -2) assigninng the new nodes next value to the head
         newNode.next = head;//linking step
-        
+
+        //step -3) head = newNode
+        head = newNode;
      }
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
-        ll.head = new Node(1);
-        ll.head.next = new Node(2);
-        System.out.println(ll.head.next.data);
+        ll.addFirst(1);
+        ll.addFirst(2);
+        ll.addFirst(3);
+        System.out.println(ll.head.data+"->"+ll.head.next.data+"->"+ll.head.next.next.data);
     }
  } 
