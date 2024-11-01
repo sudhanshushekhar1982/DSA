@@ -30,6 +30,8 @@ public class LinkedList {
     }
     public static Node head;
     public static Node tail;
+    public static int size;
+
 
     /* Adding in the linked list
      * 1)create new node
@@ -41,6 +43,7 @@ public class LinkedList {
 
         // step-1) create new node
         Node newNode = new Node(data);
+        size++;
 
         //assuming if my linked list is empty
         if(head  == null ) {
@@ -63,6 +66,7 @@ public class LinkedList {
       */
       public void addLast(int data) { // constant time operation O(1)
         Node newNode = new Node(data);
+        size++;
         if(head  == null) {
             head = tail = newNode;
             return;
@@ -101,6 +105,7 @@ public class LinkedList {
             i++;
         }
         Node newNode = new Node(data);
+        size++;
         newNode.next = temp.next;
         temp.next = newNode;
       }
@@ -116,6 +121,26 @@ public class LinkedList {
         newNode.next = temp.next;
         temp.next = newNode;
       } */
+
+
+
+      //SIZE KO PRINT YA NKALNE KA DO TARIKA HAI
+      
+      //step 1)har node ke banne pr ya delete krne pr size ko update kar le isse isse constant time me size aa jaega O(1)
+      //step 2)by loop method bhi nikal skte hai linear hoga complexity O(n)
+     public static void size(Node head) { 
+        int calc= 1;
+        if( head  == null) {
+            System.out.println("the linked list is empty!");
+            return;
+        }
+        Node temp = head;
+        while (temp.next != null) {
+            calc++;
+            temp = temp.next;
+        }
+        System.out.println("the size of the linked List is:"+calc);
+     }
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
         ll.printLL(head);
@@ -127,7 +152,8 @@ public class LinkedList {
         ll.printLL(head);
         //System.out.println(ll.head.data+"->"+ll.head.next.data+"->"+ll.head.next.next.data);
         printLL(head);
-        ll.addMiddle(2, 10);
+        ll.addMiddle(3, 4);
         ll.printLL(head);
+        System.out.println(ll.size);;
     }
  } 
