@@ -14,9 +14,7 @@
  * dono nodes ka help lagta hai always.
  */
 
-import java.security.PublicKey;
 
-import recursion.tilingProblem;
 
 public class LinkedList {
     public static class Node {///sabse pehle ek class hoga
@@ -178,6 +176,20 @@ public class LinkedList {
         size --;
         return val;
      }
+
+     //iterative search for an element in LinkedList
+     public static int itrSearh(Node head,int key) {
+        Node temp = head;
+        int idx = 0;
+        while (temp != null) {
+            if(temp.data == key) {
+                return idx;
+            }
+            idx++;
+            temp = temp.next;
+        }
+        return 0;
+     }
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
         ll.printLL(head);
@@ -196,5 +208,6 @@ public class LinkedList {
         ll.printLL(head);
         System.out.println("The last deleted value is:"+ll.removeLast());
         ll.printLL(head);
+        System.out.println(ll.size);
     }
  } 
