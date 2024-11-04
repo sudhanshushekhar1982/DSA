@@ -250,6 +250,31 @@ public class LinkedList {
         prev.next = prev.next.next;
         return;
      }
+
+    //this is called slow - fast approach or  turtle hair approach
+    public static Node findMid(Node head) { 
+        Node slow = head;
+        Node fast = head;
+        while (fast != null || fast.next != null) {
+            slow = slow.next; //+1
+            fast = fast.next.next; //+2
+        }
+        return slow;
+    }
+
+
+    public static boolean checkPalindrome() {
+        if(head == null || head.next != null) {
+            return true;
+        }
+        //step -1)find mid
+
+        Node mid = findMid(head);
+
+        //step -2)reverse 2nd half
+        
+        //step -3)check left & right half
+    }
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
         ll.printLL(head);
@@ -272,6 +297,8 @@ public class LinkedList {
     //     System.out.println(ll.recSearch(10));
     // }
     ll.revereseLL();
+    ll.printLL(head);
+    ll.deleteNthfromEnd(3);
     ll.printLL(head);
     }
  } 
