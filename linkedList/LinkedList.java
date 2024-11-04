@@ -185,10 +185,46 @@ public class LinkedList {
             if(temp.data == key) {
                 return idx;
             }
+
             idx++;
             temp = temp.next;
         }
         return 0;
+     }
+     //recursive search
+     //helper function 
+    public static int helper(Node head,int key) {
+        if(head == null) {
+            return -1;
+        }
+
+        if(head.data == key) {
+            return 0;
+        }
+
+        int idx = helper(head.next, key);
+        if( idx == -1)  {
+            return -1;
+        }
+        return idx+1;
+    }
+     public static int recSearch(int key) {
+        return helper(head,key);
+     }
+
+     public void revereseLL() {
+        Node prev = null;
+        Node curr = tail = head;
+        Node next;
+
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        head = prev;
      }
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
@@ -202,12 +238,16 @@ public class LinkedList {
         //System.out.println(ll.head.data+"->"+ll.head.next.data+"->"+ll.head.next.next.data);
         printLL(head);
         ll.addMiddle(3, 4);
-        ll.printLL(head);
-        System.out.println(ll.size);
-        System.out.println("The removed value is:"+ll.removeFirst());
-        ll.printLL(head);
-        System.out.println("The last deleted value is:"+ll.removeLast());
-        ll.printLL(head);
-        System.out.println(ll.size);
+        // ll.printLL(head);
+        // System.out.println(ll.size);
+        // System.out.println("The removed value is:"+ll.removeFirst());
+        // ll.printLL(head);
+        // System.out.println("The last deleted value is:"+ll.removeLast());
+        ////ll.printLL(head);
+    //     System.out.println(ll.size);
+    //     System.out.println(ll.recSearch(10));
+    // }
+    ll.revereseLL();
+    ll.printLL(head);
     }
  } 
