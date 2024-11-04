@@ -255,7 +255,7 @@ public class LinkedList {
     public static Node findMid(Node head) { 
         Node slow = head;
         Node fast = head;
-        while (fast != null || fast.next != null) {
+        while (fast != null && fast.next != null) {
             slow = slow.next; //+1
             fast = fast.next.next; //+2
         }
@@ -264,29 +264,51 @@ public class LinkedList {
 
 
     public static boolean checkPalindrome() {
-        if(head == null || head.next != null) {
+        if(head == null || head.next == null) {
             return true;
         }
         //step -1)find mid
 
-        Node mid = findMid(head);
+        Node midNode = findMid(head);
 
         //step -2)reverse 2nd half
-        
+
+        Node prev = null;
+        Node curr = midNode;
+        Node next;
+
+        while(curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        Node right = prev;//head of the right half
+        Node  left = head;
         //step -3)check left & right half
+
+        while(right != null) {
+            if(left.data != right.data) {
+                return false;
+            }
+            left = left.next;
+            right = right.next;
+        }
+        return true;
     }
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
-        ll.printLL(head);
-        ll.addFirst(2);
-        ll.printLL(head);
-        ll.addFirst(1);
-        ll.printLL(head);
-        ll.addLast(3);
-        ll.printLL(head);
+        // ll.printLL(head);
+        // ll.addFirst(2);
+        // ll.printLL(head);
+        // ll.addFirst(1);
+        // ll.printLL(head);
+        // ll.addLast(3);
+        // ll.printLL(head);
         //System.out.println(ll.head.data+"->"+ll.head.next.data+"->"+ll.head.next.next.data);
-        printLL(head);
-        ll.addMiddle(3, 4);
+        // printLL(head);
+        // ll.addMiddle(3, 4);
         // ll.printLL(head);
         // System.out.println(ll.size);
         // System.out.println("The removed value is:"+ll.removeFirst());
@@ -296,9 +318,18 @@ public class LinkedList {
     //     System.out.println(ll.size);
     //     System.out.println(ll.recSearch(10));
     // }
-    ll.revereseLL();
+    // ll.revereseLL();
+    // ll.printLL(head);
+    // ll.deleteNthfromEnd(3);
+    // ll.printLL(head);
+    // }
+    //ll.addLast(1);
+    ll.addLast(2);
+    ll.addLast(2);
+    //ll.addLast(1);
     ll.printLL(head);
-    ll.deleteNthfromEnd(3);
-    ll.printLL(head);
+    // boolean pal = ll.checkPalindrome();
+    // System.out.println(pal);
+    System.out.println(ll.checkPalindrome());
     }
  } 
