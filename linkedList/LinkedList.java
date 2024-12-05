@@ -312,6 +312,39 @@ public class LinkedList {
 
         return false; //cycle doesn't exists
     }
+
+    public static void removeCycle() {
+        //detecting of cycle
+        Node slow = head;
+        Node fast = head;
+        boolean cycle = false;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if(fast == slow) {
+                cycle = true;
+                break;
+            }
+        }
+
+        if(cycle == false) {
+            return;
+        }
+
+        //find the meeqting point
+
+        slow = head;
+        Node prev = null; //store the last node of the cycle
+        while(slow != fast) {
+            prev = fast;
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        //remove cycle -> last.next = null
+
+        prev.next = null;
+    }
     public static void main(String[] args) {
        //LinkedList ll = new LinkedList();
         // ll.printLL(head);
@@ -348,10 +381,13 @@ public class LinkedList {
     System.out.println(ll.checkPalindrome()); */
 
     head = new Node(1);
-    head.next = new Node(2);
-    head.next.next =  new Node(3);
-    head.next.next.next = head;
+    Node temp = new Node(2);
+    head.next = temp;
+    head.next.next = new Node(3);
+    head.next.next.next = temp;
 
+    System.out.println(isCycle());
+    removeCycle();
     System.out.println(isCycle());
     }
  } 
