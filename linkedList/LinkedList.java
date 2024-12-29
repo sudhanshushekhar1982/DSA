@@ -345,6 +345,22 @@ public class LinkedList {
 
         prev.next = null;
     }
+
+    // public Node mergeSort(Node head) {
+    //     //base case
+    //     if(head == null && head.next == null) {
+    //         return head;
+    //     }
+    //     //find mid
+    //     Node mid = getMid();
+    //     //right & left MS
+    //     Node rigthHead = mid.next;
+    //     mid.next = null;
+    //     Node newLeft = mergeSort(head);
+    //     Node newRight = mergeSort(rigthHead);
+    //     //merge
+    //     return merge(newLeft,newRight);
+    // }
     public static void main(String[] args) {
        //LinkedList ll = new LinkedList();
         // ll.printLL(head);
